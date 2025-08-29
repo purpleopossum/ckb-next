@@ -114,7 +114,7 @@ int updatergb_kb(usbdevice* kb, int force){
     if(IS_K63_WL(kb))
         return updatergb_wireless(kb, lastlight, newlight);
 
-    if (kb->product == P_K55 || kb->product == P_K66 || kb->product == P_K68_NRGB) {
+    if (kb->product == P_K55 || kb->product == P_K55_CORE || kb->product == P_K66 || kb->product == P_K68_NRGB) {
         // The K55 and K68 NRGB don't support winlock setting through the
         // normal packets, so we have to use a different packet to set it.
         // 8 is the winlock ("lock") led position in keymap.c

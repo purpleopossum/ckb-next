@@ -43,9 +43,10 @@
 #define V_CORSAIR            0x1b1c
 
 #define P_K55                0x1b3d
+#define P_K55_CORE           0x1bfe
 #define P_K55_PRO            0x1ba4
 #define P_K55_PRO_XT         0x1ba1
-#define IS_K55(kb)           ((kb)->vendor == V_CORSAIR && ((kb)->product == P_K55 || (kb)->product == P_K55_PRO || (kb)->product == P_K55_PRO_XT))
+#define IS_K55(kb)           ((kb)->vendor == V_CORSAIR && ((kb)->product == P_K55 || (kb)->product == P_K55_CORE || (kb)->product == P_K55_PRO || (kb)->product == P_K55_PRO_XT))
 
 
 #define P_K57_D              0x1b62
@@ -317,7 +318,7 @@ const char* product_str(ushort product);
 // Used for devices that have the scroll wheel packet in the hardware hid packet only
 #define SW_PKT_HAS_NO_WHEEL(kb)                     ((kb)->vendor == V_CORSAIR && ((kb)->product == P_M55_RGB_PRO || (kb)->product == P_KATAR_PRO_XT || (kb)->product == P_KATAR_PRO))
 
-#define HAS_NO_HW_PROFILE(kb)                       ((kb)->vendor == V_CORSAIR && (IS_POLARIS(kb) || (kb)->product == P_K55))
+#define HAS_NO_HW_PROFILE(kb)                       ((kb)->vendor == V_CORSAIR && ((IS_POLARIS(kb) || (kb)->product == P_K55) || (IS_POLARIS(kb) || (kb)->product == P_K55_CORE)) )
 
 /// Start the USB main loop. Returns program exit code when finished
 int usbmain();
